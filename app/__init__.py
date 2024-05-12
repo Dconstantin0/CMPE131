@@ -23,4 +23,9 @@ with obj.app_context():
     from app.models import Ticket, Route, Flight
     db.create_all()
 
+    from app.fake_db import add_tickets, add_routes, add_flights
+    add_tickets()
+    add_routes()
+    add_flights()
+
 from app import routes
