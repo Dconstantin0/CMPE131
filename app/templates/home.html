@@ -1,8 +1,31 @@
-{% extends "base.html" %} {% block head %}
+{% extends "base.html" %} 
+{% block head %}
 <link
   rel="stylesheet"
   href="{{ url_for('static', filename='css/home.css') }}"
 />
-{% endblock %} {% block content %}
-<h1>Home Page</h1>
+{% endblock %} 
+{% block content %}
+<div class="centered-container">
+  <h2 class="section-header">Available Airport Information</h2>
+  <div class="flip-card-container">
+    {% for airport in airports %}
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <h1>{{ airport.airport_code }}</h1>
+        </div>
+        <div class="flip-card-back">
+          <h3>{{ airport.airport_code }}</h3>
+          <p><span class="label">Timezone:</span> {{ airport.timezone }}</p>
+          <p><span class="label">Terminals:</span> {{ airport.terminal_info }}</p>
+          <p><span class="label">Runways:</span> {{ airport.runway_info }}</p>
+
+          <a href="{{ airport.url_link }}" class="btn" role="button" target="_blank">Airport Link</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
 {% endblock %}
