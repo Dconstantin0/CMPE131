@@ -20,7 +20,7 @@ obj.config.from_mapping(
 db = SQLAlchemy(obj)
 
 with obj.app_context():
-    from app.models import User
+    from app.models import Ticket, Route, Flight
     db.create_all()
 
 from app import routes
