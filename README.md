@@ -12,11 +12,11 @@ Here are the six functional requirements our team implemented, utilizing the SQL
 
 To run this project locally, follow these steps in your terminal:
 
-1. **Clone the Repository**
+1. **Clone and Open the Repository**
 
 ```
-git clone https://github.com/yourusername/airline-reservation-system.git
-cd airline-reservation-system
+git clone https://github.com/Dconstantin0/CMPE131.git
+cd CMPE131
 ```
 
 2. **Install Required Packages**
