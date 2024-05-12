@@ -17,3 +17,8 @@ def home_page():
 @obj.route("/flights")
 def flights_page():
     return render_template("flights.html")
+
+@obj.route("/bookings")
+def bookings_page():
+    return render_template("bookings.html")
+
