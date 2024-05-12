@@ -1,19 +1,26 @@
 <html>
-<head>
-    <title>Home Page - my blog</title>
-</head>
-<body>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul>
-        {% for message in messages %}
-        <li style="color:red">{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    {% endwith %}
-
-    {% block content %}
-    {% endblock %}
-</body>
+  <head>
+    <title>CloudHigh Reservation</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/base.css') }}"
+    />
+    {% block head %} {% endblock %}
+  </head>
+  <body>
+    <nav>
+      <div class="nav-container">
+        <a
+          class="nav-name"
+          style="pointer-events: none; cursor: default"
+          href="#"
+          >CloudHigh Traveling</a
+        >
+        <a href="/">Home Page</a>
+        <a href="/flights">Book a Flight</a>
+        <a href="/bookings">Bookings</a>
+      </div>
+    </nav>
+    {% block content %} {% endblock %}
+  </body>
 </html>

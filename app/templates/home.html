@@ -1,41 +1,8 @@
-<html>
-<head>
-    {% if title %}
-        <title>{{title}} </title>
-    {% else %}
-        <title>Home Page - my blog</title>
-    {% endif %}
-</head>
-<body>
-    <h1>Hello, Class</h1>
-    <p>This is now in its own folder</p>
-     <table>
-        <tr>
-          <th>Company</th>
-          <th>Contact</th>
-          <th>Country</th>
-        </tr>
-        <tr>
-            <td>{{company}}</td>
-          <td>Maria Anders</td>
-          <td>Germany</td>
-        </tr>
-        <tr>
-          <td>Centro comercial Moctezuma</td>
-          <td>Francisco Chang</td>
-          <td>Mexico</td>
-        </tr>
-    </table>
-    <ul>
-        {% for n in names %}
-        <li>{{n}}</li>
-        {% endfor %}
-    </ul>
-
-    {% for al in author_list %}
-    <p>{{al.author}}: {{al.body}}</p>
-    {% endfor %}
-
-</body>
-</html>
-
+{% extends "base.html" %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/home.css') }}"
+/>
+{% endblock %} {% block content %}
+<h1>Home Page</h1>
+{% endblock %}
