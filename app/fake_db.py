@@ -1,4 +1,4 @@
-from app.models import Ticket, Route, Flight
+from app.models import Ticket, Route, Flight, Airport
 from app import db
 
 def add_tickets():
@@ -51,4 +51,19 @@ def add_flights():
         # Add each flight manually into DB
         for flight in flights:
             db.session.add(flight)
+        db.session.commit()
+
+def add_airports():
+    # Only run if the airport DB is empty
+    if not Airport.query.first():  # Check if the database is empty
+        airports = [
+            Airport(airport_code='SFO', terminal_info='Terminals 1, 2, and International Terminal', timezone='America/Los_Angeles', runway_info='Runways 1L/19R, 1R/19L, 28L/10R, 28R/10L', url_link='https://www.flysfo.com/'),
+            Airport(airport_code='LAX', terminal_info='Terminal 1 to Terminal 8', timezone='America/Los_Angeles', runway_info='Runway 24L/06R, Runway 24R/06L', url_link='https://www.flylax.com/'),
+            Airport(airport_code='SJC', terminal_info='Terminal A and Terminal B', timezone='America/Los_Angeles', runway_info='Runway 12L/30R, Runway 12R/30L', url_link='https://www.flysanjose.com/'),
+            Airport(airport_code='OAK', terminal_info='Terminal 1 and Terminal 2', timezone='America/Los_Angeles', runway_info='Runway 12/30, Runway 10/28', url_link='https://www.oaklandairport.com/'
+            )
+        ]
+        # Add each flight manually into DB
+        for airport in airports:
+            db.session.add(airport)
         db.session.commit()

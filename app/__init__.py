@@ -20,12 +20,13 @@ obj.config.from_mapping(
 db = SQLAlchemy(obj)
 
 with obj.app_context():
-    from app.models import Ticket, Route, Flight
+    from app.models import Ticket, Route, Flight, Airport
     db.create_all()
 
-    from app.fake_db import add_tickets, add_routes, add_flights
+    from app.fake_db import add_tickets, add_routes, add_flights, add_airports
     add_tickets()
     add_routes()
     add_flights()
+    add_airports()
 
 from app import routes
