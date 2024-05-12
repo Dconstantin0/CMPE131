@@ -31,6 +31,6 @@ pip install -r requirements.txt
 python run.py
 ```
 
-5. **Visit the Application**
+4. **Visit the Application**
 - Open your web browser and visit `http://localhost:5000/`
 
