@@ -23,8 +23,7 @@ with obj.app_context():
     from app.models import Ticket, Route, Flight, Airport
     db.create_all()
 
-    from app.fake_db import add_tickets, add_routes, add_flights, add_airports
-    add_tickets()
+    from app.fake_db import add_routes, add_flights, add_airports
     add_routes()
     add_flights()
     add_airports()
