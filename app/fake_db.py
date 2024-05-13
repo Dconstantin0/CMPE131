@@ -1,4 +1,4 @@
-from app.models import Ticket, Route, Flight, Airport
+from app.models import Route, Flight, Airport
 from app import db
 
 def add_routes():
@@ -31,7 +31,7 @@ def add_flights():
             Flight(flight_number=105, route_id=3, weather_description='Cloudy', airline_name='UNITED', aircraft_model="G800", price=50)
         ]
         
-        # Add each flight manually into DB
+        # Add each airport manually into DB
         for flight in flights:
             db.session.add(flight)
         db.session.commit()
