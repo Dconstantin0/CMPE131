@@ -24,6 +24,23 @@ message in messages %}
       %Y @ %I:%M %p')}}
     </p>
     <p><strong>Price:</strong> ${{ ticket.flight.price }}</p>
+
+    <form
+      action="{{ url_for('edit_booking', ticket_number=ticket.ticket_number) }}"
+      method="POST"
+    >
+      <select
+        name="new_seat_class"
+        class="edit-btn"
+        onchange="this.form.submit()"
+      >
+        <option value="none" selected disabled hidden>Edit Seat</option>
+        <option value="BUSINESS">Business</option>
+        <option value="FIRST">First</option>
+        <option value="ECONOMY">Economy</option>
+      </select>
+    </form>
+
     <form
       action="{{ url_for('delete_booking', ticket_number=ticket.ticket_number) }}"
       method="POST"

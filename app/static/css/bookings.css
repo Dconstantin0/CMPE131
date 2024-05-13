@@ -36,21 +36,6 @@ p {
   color: #666;
 }
 
-.delete-btn {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  padding: 8px 16px;
-  background-color: #dc3545; /* Bootstrap's danger color */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.delete-btn:hover {
-  background-color: #c82333; /* Darken color on hover */
-}
-
 @media (max-width: 768px) {
   .card {
     width: 100%;
@@ -66,19 +51,47 @@ p {
   color: #fff;
 }
 .success {
-  background-color: #28a745; /* Green for success */
+  background-color: #28a745;
   border-color: #1e7e34;
 }
 .error {
-  background-color: #dc3545; /* Red for errors */
+  background-color: #dc3545;
   border-color: #bd2130;
 }
 .info {
-  background-color: #17a2b8; /* Blue for information */
+  background-color: #17a2b8;
   border-color: #117a8b;
 }
 .warning {
-  background-color: #ffc107; /* Yellow for warnings */
+  background-color: #ffc107;
   border-color: #d39e00;
-  color: #212529; /* Dark color for text to provide contrast */
+  color: #212529;
+}
+
+.delete-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 8px 16px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+.edit-btn {
+  position: absolute;
+  bottom: 60px;
+  right: 20px;
+  padding: 8px 16px;
+  background-color: orange;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
