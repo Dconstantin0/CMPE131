@@ -33,5 +33,15 @@ message in messages %}
   </div>
   {% endfor %}
 </div>
+<form>
+  <button type="button" class="delete-btn" onclick="printFunction()">
+    Print Page
+  </button>
+</form>
+<script>
+  function printFunction() {
+    print();
+  }
+</script>
 
 {% endblock %}
