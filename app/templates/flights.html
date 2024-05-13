@@ -1,10 +1,54 @@
-{% extends "base.html" %} 
-{% block head %}
+{% extends "base.html" %} {% block head %}
 <link
   rel="stylesheet"
   href="{{ url_for('static', filename='css/flights.css') }}"
 />
-{% endblock %} 
-{% block content %}
-<h1>Flights Page</h1>
+{% endblock %} {% block content %}
+
+<div class="route-container">
+  {% for origin, flight_info in flight_info.items() %}
+  <div class="route">
+    <input type="checkbox" id="route{{ loop.index }}" class="route-checkbox" />
+    <label for="route{{ loop.index }}" class="route-label">
+      <span>Airport: {{ origin }}</span>
+    </label>
+    <div class="slide">
+      <table>
+        <thead>
+          <tr>
+            <th>Flight Number</th>
+            <th>Airline Name</th>
+            <th>Weather</th>
+            <th>Price</th>
+            <th>Book</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if flight_info %} {% for flight in flight_info %}
+          <tr>
+            <td>{{ flight.flight_number }}</td>
+            <td>{{ flight.airline_name }}</td>
+            <td>{{ flight.weather_description }}</td>
+            <td>${{ flight.price }}</td>
+            <td>
+              <form
+                action="{{ url_for('book_flight', flight_number=flight.flight_number) }}"
+                method="POST"
+              >
+                <button type="submit" class="delete-btn">Book a Flight</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %} {% else %}
+          <tr>
+            <td colspan="5">No flights available</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
 {% endblock %}
