@@ -17,6 +17,7 @@
         <thead>
           <tr>
             <th>Flight Number</th>
+            <th>Destination</th>
             <th>Airline Name</th>
             <th>Weather</th>
             <th>Price</th>
@@ -27,6 +28,7 @@
           {% if flight_info %} {% for flight in flight_info %}
           <tr>
             <td>{{ flight.flight_number }}</td>
+            <td>{{ flight.route.destination }}</td>
             <td>{{ flight.airline_name }}</td>
             <td>{{ flight.weather_description }}</td>
             <td>${{ flight.price }}</td>

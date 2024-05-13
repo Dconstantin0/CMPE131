@@ -29,6 +29,8 @@ def flights_page():
         # For all flights corresponding to the route ID, add it to matching route origin
         for flight in Flight.query.filter_by(route_id=route.route_id).all():
             flight_info[route.origin].append(flight)
+        
+    print(flight_info)
 
     return render_template("flights.html", flight_info=flight_info)
 
