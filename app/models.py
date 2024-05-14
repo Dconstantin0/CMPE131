@@ -4,11 +4,9 @@ from datetime import datetime
 # Model for our ticket DB
 class Ticket(db.Model):
     ticket_number = db.Column(db.Integer, primary_key=True)
-    flight_number = db.Column(db.Integer, db.ForeignKey('flight.flight_number')) # Connected to flight ID
+    flight_number = db.Column(db.Integer, db.ForeignKey('flight.flight_number')) # Connected to flight ID/number
     seat_class = db.Column(db.String(10), default='Not Chosen')
-
     booking_date = db.Column(db.DateTime, default=datetime.now)
-    status = db.Column(db.String(50), nullable=False, default='Confirmed')
 
     flight = db.relationship('Flight', backref='tickets')
 
@@ -22,7 +20,7 @@ class Route(db.Model):
 # Model for our Flight DB
 class Flight(db.Model):
     flight_number = db.Column(db.Integer, primary_key=True)
-    route_id = db.Column(db.Integer, db.ForeignKey('route.route_id'))
+    route_id = db.Column(db.Integer, db.ForeignKey('route.route_id')) # Shows the Origin and Destination of the flight
     weather_description = db.Column(db.String(200)) 
     aircraft_model = db.Column(db.String(100))  
     airline_name = db.Column(db.String(100)) 
@@ -33,10 +31,10 @@ class Flight(db.Model):
 # Model for our Airport DB (independent)
 class Airport(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    airport_code = db.Column(db.String(3), unique=True, nullable=False)
-    terminal_info = db.Column(db.String(255))  # Descriptive text about terminals
+    airport_code = db.Column(db.String(3), unique=True)
+    terminal_info = db.Column(db.String(255))  # Info text about terminals
     timezone = db.Column(db.String(50))  # Standard timezone in that area
-    runway_info = db.Column(db.String(255))  # Descriptive text about runways
+    runway_info = db.Column(db.String(255))  # Text about runways
     url_link = db.Column(db.String(255))  # URL to the airport's official website
 
 

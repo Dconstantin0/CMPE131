@@ -1,6 +1,10 @@
 from app.models import Route, Flight, Airport
 from app import db
 
+'''
+THIS FILE IS FOR CREATING ENTRIES INTO THE DATABSE!!!!
+'''
+
 def add_routes():
     # Only run if route DB is empty
     if not Route.query.first():
@@ -26,9 +30,9 @@ def add_flights():
         flights = [
             Flight(flight_number=101, route_id=1, weather_description='Clear skies', airline_name='DELTA', aircraft_model="B737MAX", price=230),
             Flight(flight_number=102, route_id=1, weather_description='Light rain', airline_name='SPIRIT', aircraft_model="A320NEO", price=254),
-            Flight(flight_number=103, route_id=2, weather_description='Heavy rain', airline_name='SOUTHWEST', aircraft_model="B777X", price=390),
             Flight(flight_number=104, route_id=2, weather_description='Sunny', airline_name='DELTA', aircraft_model="A321XLR", price=1020),
-            Flight(flight_number=105, route_id=3, weather_description='Cloudy', airline_name='UNITED', aircraft_model="G800", price=50)
+            Flight(flight_number=115, route_id=3, weather_description='Rainy', airline_name='UNITED', aircraft_model="A320NEO", price=510),
+            Flight(flight_number=143, route_id=6, weather_description='Rainy', airline_name='SPIRIT', aircraft_model="B777X", price=545),
         ]
         
         # Add each airport manually into DB

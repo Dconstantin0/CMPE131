@@ -1,0 +1,62 @@
+{% extends "base.html" %} 
+
+{% block head %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"
+/>
+<script>
+  $(document).ready(function () {
+    $("table").DataTable({
+      "lengthChange": false,
+      "paging": false,
+      "info": false 
+    });
+  })
+</script>
+{% endblock %} 
+
+{% block content %} 
+{% for origin, flights in flight_info.items() %}
+  <h2>Airport: {{ origin }}</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Flight Number</th>
+        <th>Destination</th>
+        <th>Airline Name</th>
+        <th>Weather</th>
+        <th>Price</th>
+        <th>Book</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if flights %} 
+        {% for flight in flights %}
+          <tr>
+            <td style="text-align: center;">{{ flight.flight_number }}</td>
+            <td style="text-align: center;">{{ flight.route.destination }}</td>
+            <td style="text-align: center;">{{ flight.airline_name }}</td>
+            <td style="text-align: center;">{{ flight.weather_description }}</td>
+            <td style="text-align: center;">${{ flight.price }}</td>
+            <td style="text-align: center;">
+              <form action="{{ url_for('book_flight', flight_number=flight.flight_number) }}" method="POST">
+                <button type="submit">Book a Flight</button>
+              </form>
+            </td>
+          </tr>
+      {% else %}
+        <tr>
+          <td style="text-align: center;">No Data Available</td>
+        </tr>
+        {% endfor %} 
+      {% endif %}
+    </tbody>
+  </table>
+  <br><br><br>
+  
+{% endfor %} 
+{% endblock %}

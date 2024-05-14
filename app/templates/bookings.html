@@ -1,64 +1,44 @@
-{% extends "base.html" %} {% block head %}
-<link
-  rel="stylesheet"
-  href="{{ url_for('static', filename='css/bookings.css') }}"
-/>
-{% endblock %}{% block content %} {% with messages =
-get_flashed_messages(with_categories=true) %} {% if messages %} {% for category,
-message in messages %}
-<div class="flash-message {{ category }}">{{ message }}</div>
-{% endfor %} {% endif %} {% endwith %}
-<div class="container">
-  {% for ticket in tickets %}
-  <div class="card">
-    <div class="status">{{ ticket.status }}</div>
-    <div class="name-container">
-      <h2>Booking #{{ ticket.ticket_number }}</h2>
-      <h2>Flight: {{ ticket.flight.flight_number }}</h2>
-    </div>
-    <p><strong>Airline:</strong> {{ ticket.flight.airline_name }}</p>
-    <p><strong>Aircraft:</strong> {{ ticket.flight.aircraft_model }}</p>
-    <p><strong>Seat Class:</strong> {{ ticket.seat_class }}</p>
-    <p>
-      <strong>Day of Purchase:</strong> {{ ticket.booking_date.strftime('%B %d,
-      %Y @ %I:%M %p')}}
-    </p>
-    <p><strong>Price:</strong> ${{ ticket.flight.price }}</p>
+{% extends "base.html" %} 
 
-    <form
-      action="{{ url_for('edit_booking', ticket_number=ticket.ticket_number) }}"
-      method="POST"
-    >
-      <select
-        name="new_seat_class"
-        class="edit-btn"
-        onchange="this.form.submit()"
-      >
-        <option value="none" selected disabled hidden>Edit Seat</option>
-        <option value="BUSINESS">Business</option>
-        <option value="FIRST">First</option>
-        <option value="ECONOMY">Economy</option>
-      </select>
-    </form>
-
-    <form
-      action="{{ url_for('delete_booking', ticket_number=ticket.ticket_number) }}"
-      method="POST"
-    >
-      <button type="submit" class="delete-btn">Remove Booking</button>
-    </form>
-  </div>
-  {% endfor %}
-</div>
-<form>
-  <button type="button" class="delete-btn" onclick="printFunction()">
-    Print Page
-  </button>
-</form>
+{% block head %}
 <script>
   function printFunction() {
     print();
   }
 </script>
+{% endblock %} 
 
+{% block content %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li style="color:rgb(255, 81, 0)">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endwith %}
+
+<form><button type="button" onclick="printFunction()">Print Page</button></form>
+{% for ticket in tickets %}
+  <h2>Ticket #{{ ticket.ticket_number }}, Flight #{{ ticket.flight_number }} to {{ ticket.flight.route.destination }} </h2>
+
+  <p><strong>Airline:</strong> {{ ticket.flight.airline_name }}</p>
+  <p><strong>Price:</strong> ${{ ticket.flight.price }}</p>
+  <p><strong>Aircraft:</strong> {{ ticket.flight.aircraft_model }}</p>
+  <p><strong>Seat Class:</strong> {{ ticket.seat_class }}</p>
+  <p><strong>Day of Purchase:</strong> {{ ticket.booking_date.strftime('%B %d, %Y @%I:%M %p')}}</p>
+
+  <form action="{{ url_for('edit_booking', ticket_number=ticket.ticket_number) }}" method="POST">
+    <select name="new_seat_class" onchange="this.form.submit()">
+      <option value="none" selected disabled hidden>Edit Seat</option>
+      <option value="FIRST">First</option>
+      <option value="BUSINESS">Business</option>
+      <option value="ECONOMY">Economy</option>
+    </select>
+  </form>
+  <form action="{{ url_for('delete_booking', ticket_number=ticket.ticket_number) }}" method="POST">
+    <button type="submit">Remove Booking</button>
+  </form>
+{% endfor %} 
 {% endblock %}
