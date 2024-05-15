@@ -1,63 +1,87 @@
 {% extends "base.html" %}
 {% block content %}
 {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul>
-        {% for message in messages %}
-        <li style="color:rgb(255, 81, 0)">{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-{% endwith %}
-<h1>Add Route</h1>
-<form action="" method="POST" novalidate>
-	{{route_form.hidden_tag()}}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li style="color:rgb(255, 81, 0)">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
 
-	<p>{{route_form.origin.label}}
-		{{route_form.origin(size=32)}}
-	</p>
+    <h1>Add Route</h1>
+    <form action="" method="POST" novalidate>
+        {{route_form.hidden_tag()}}
 
-	<p>{{route_form.destination.label}}
-		{{route_form.destination(size=32)}}
-	</p>
+        <p>{{route_form.origin.label}}
+            {{route_form.origin(size=32)}}
+        </p>
 
-    <p>{{ route_form.submit() }}</p>
+        <p>{{route_form.destination.label}}
+            {{route_form.destination(size=32)}}
+        </p>
 
-</form>
+        <p>{{ route_form.submit() }}</p>
 
-<h1>Add Flight</h1>
-<form action="" method="POST" novalidate>
-	{{flight_form.hidden_tag()}}
+    </form>
 
-	<p>{{flight_form.flight_origin.label}}
-		{{flight_form.flight_origin(size=32)}}
-	</p>
+    <h1>Add Flight</h1>
+    <form action="" method="POST" novalidate>
+        {{flight_form.hidden_tag()}}
 
-	<p>{{flight_form.flight_destination.label}}
-		{{flight_form.flight_destination(size=32)}}
-	</p>
+        <p>{{flight_form.flight_origin.label}}
+            {{flight_form.flight_origin(size=32)}}
+        </p>
 
-    <p>{{flight_form.flight_number.label}}
-		{{flight_form.flight_number(size=32)}}
-	</p>
+        <p>{{flight_form.flight_destination.label}}
+            {{flight_form.flight_destination(size=32)}}
+        </p>
 
-    <p>{{flight_form.weather_description.label}}
-		{{flight_form.weather_description(size=32)}}
-	</p>
+        <p>{{flight_form.flight_number.label}}
+            {{flight_form.flight_number(size=32)}}
+        </p>
 
-    <p>{{flight_form.aircraft_model.label}}
-		{{flight_form.aircraft_model(size=32)}}
-	</p>
+        <p>{{flight_form.weather_description.label}}
+            {{flight_form.weather_description(size=32)}}
+        </p>
 
-    <p>{{flight_form.airline_name.label}}
-		{{flight_form.airline_name(size=32)}}
-	</p>
+        <p>{{flight_form.aircraft_model.label}}
+            {{flight_form.aircraft_model(size=32)}}
+        </p>
 
-    <p>{{flight_form.price.label}}
-		{{flight_form.price(size=32)}}
-	</p>
+        <p>{{flight_form.airline_name.label}}
+            {{flight_form.airline_name(size=32)}}
+        </p>
 
-    <p>{{ flight_form.submit() }}</p>
+        <p>{{flight_form.price.label}}
+            {{flight_form.price(size=32)}}
+        </p>
 
-</form>
+        <p>{{ flight_form.submit() }}</p>
+
+    </form>
+
+    <h1>Add airport</h1>
+    <form action="" method="POST" novalidate>
+        {{airport_form.hidden_tag()}}
+        <p>{{airport_form.airport_code.label}}
+            {{airport_form.airport_code(size=32)}}
+        </p>
+        <p>{{airport_form.airport_timezone.label}}
+            {{airport_form.airport_timezone(size=32)}}
+        </p>
+        <p>{{airport_form.airport_terminal.label}}
+            {{airport_form.airport_terminal(size=64)}}
+        </p>
+        <p>{{airport_form.airport_runways.label}}
+            {{airport_form.airport_runways(size=64)}}
+        </p>
+        <p>{{airport_form.airport_url.label}}
+            {{airport_form.airport_url(size=32)}}
+        </p>
+
+        <p>{{ airport_form.submit() }}</p>
+
+    </form>
 {% endblock %}
