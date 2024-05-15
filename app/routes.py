@@ -101,7 +101,6 @@ def add_page():
         new_timezone = airport_form.airport_timezone.data.upper() # Standard timezone in that area
         new_runway_info = airport_form.airport_runways.data.upper() # Text about runways
         new_url_link = airport_form.airport_url.data.upper()
-        print("helllo")
         # Checks if airport name is IATA code or length of 3
         if len(new_airport_code) != 3:
             flash("Unsuccessful: Airport Code should be IATA Code (length of 3)")
@@ -126,7 +125,6 @@ def add_page():
     if route_form.validate_on_submit():
         new_origin = route_form.origin.data.upper()
         new_destination = route_form.destination.data.upper()
-        print("helllo route")
 
         # Checks if origin and destination are IATA codes or length of 3
         if (len(new_origin) != 3 or len(new_destination) != 3):
@@ -155,7 +153,6 @@ def add_page():
         new_aircraft_model = flight_form.aircraft_model.data.upper() # Used .upper() to fix formatting in DB
         new_airline_name = flight_form.airline_name.data.upper()
         new_price = flight_form.price.data
-        print("hellloflight")
 
         # Checks if origin and destination are IATA codes or length of 3
         if (len(new_origin) != 3 or len(new_destination) != 3):
